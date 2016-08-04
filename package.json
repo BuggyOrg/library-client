@@ -8,7 +8,7 @@
     "build": "babel src -d lib",
     "prepublish": "babel src -d lib",
     "doc": "jsdoc -c .jsdoc.json",
-    "publish-docs": "jsdoc -c .jsdoc.json && git subtree split --prefix jsdoc -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages"
+    "publish-docs": "jsdoc -c .jsdoc.json && (git diff --exit-code > /dev/null || (echo 'No clean head. Please commit or stash before pushing docs.' && exit 1))  && (git diff --cached --exit-code  > /dev/null  || (echo 'No clean head. Please commit or stash before pushing docs.' && exit 1)) && git add -f jsdoc/* && git commit -m '(doc) New documentation.' && git subtree split --prefix jsdoc -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages && git reset HEAD~1"
   },
   "author": "Maximilian Klein",
   "license": "MIT",
@@ -19,6 +19,7 @@
     "chai": "^3.5.0",
     "chai-as-promised": "^5.3.0",
     "chai-http": "^3.0.0",
+    "jsdoc": "^3.4.0",
     "mocha": "^2.4.5",
     "standard": "^6.0.8"
   },
