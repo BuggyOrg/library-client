@@ -27,6 +27,8 @@ All three methods return the same promise-based API to access and manipulate the
 |`setConfig(key, value)` | Set the configuration Value for a specific key. |
 |`export()` | Get a copy of the whole database. |
 
+You can find the API docs [here](https://buggyorg.github.io/library-client/global.html).
+
 # Example
 
 ```js
