@@ -1,0 +1,10 @@
+{
+  "plugins": ["plugins/markdown"],
+  "source": {
+    "include": ["src/client.js", "src/restClient.js"]
+  },
+  "opts": {
+    "encoding": "utf8",
+    "destination": "./jsdoc/"
+  }
+}
