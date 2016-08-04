@@ -27,3 +27,12 @@ All three methods return the same promise-based API to access and manipulate the
 |`setConfig(key, value)` | Set the configuration Value for a specific key. |
 |`export()` | Get a copy of the whole database. |
 
+# Example
+
+```js
+import {fromFile} from '@buggyorg/library-client'
+
+var client = fromFile('myLibrary.json')
+client.info()
+  .then((info) => console.log(info))
+```
