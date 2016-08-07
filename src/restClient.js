@@ -6,6 +6,8 @@ const opt = (path, prefix) => (path)
   ? opt(prefix) + '/' + path
   : ''
 
+const enc = encodeURIComponent
+
 export default (server) => {
   const get = (path) => {
     return request(join(server, path)).then((data) => JSON.parse(data))
@@ -43,7 +45,7 @@ export default (server) => {
      * @returns {Promise.<Component>} The component with the meta ID.
      * @throws If no component with the given meta id or version exists. (You have to use Promise.catch(...) to get this error.)
      */
-    component: (meta, version) => get('components/get/' + meta + opt(version)),
+    component: (meta, version) => get('components/get/' + enc(meta) + opt(version)),
     /**
      * Add a component to the library.
      * @param {Component} component The Component you want to add to the library.
@@ -59,7 +61,7 @@ export default (server) => {
      * @returns {Promise.<Object>} The value of the key or if no key was specified an object with all the meta keys as keys and their corresponding values.
      * @throws If the component does not exist in the specified version or the key is not defined.
      */
-    meta: (component, key, version) => get('meta/' + component + opt(version, 'version') + opt(key)),
+    meta: (component, key, version) => get('meta/' + enc(component) + opt(version, 'version') + opt(key)),
     /**
      * Add od set meta information for a meta key of a component.
      * @param {string} component The meta id of the component.
@@ -68,7 +70,7 @@ export default (server) => {
      * @returns {Promise} The meta key was successfully added.
      * @throws If the component is not defined.
      */
-    addMeta: (component, key, value, version) => post('meta/' + component + opt(version, 'version') + '/' + key, {value}),
+    addMeta: (component, key, value, version) => post('meta/' + enc(component) + opt(version, 'version') + '/' + key, {value}),
     /**
      * Get the configuration value specified by `key`.
      * @param {string} key The configuration key.

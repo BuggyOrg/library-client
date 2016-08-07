@@ -1,5 +1,5 @@
 
-import localClient from './localClient'
+import * as localClient from './localClient'
 import restClient from './restClient'
 
 /**

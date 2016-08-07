@@ -45,6 +45,15 @@ describe('Client REST API', () => {
     )
   })
 
+  it('can use special characters in component names', () => {
+    return server()
+    .then((api) =>
+      api.addComponent({meta: 'blubb@→/â', version: '0.1.0', ports: [{name: 'out', type: 'output'}]})
+      .then(() => api.component('blubb@→/â'))
+      .then((cmp) => expect(cmp.version).to.equal('0.1.0'))
+    )
+  })
+
   it('cannot set meta infos for not existing nodes', () => {
     return expect(server()
     .then((api) => api.addMeta('blubb', 'data', 4))
