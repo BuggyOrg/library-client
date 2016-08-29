@@ -9,7 +9,7 @@ chai.use(chaiAsPromised)
 var expect = chai.expect
 
 const defaultData = {
-  components: [],
+  Components: [],
   meta: [],
   config: []
 }
@@ -39,7 +39,7 @@ describe('Client REST API', () => {
   it('can interact with components', () => {
     return server()
     .then((api) =>
-      api.addComponent({meta: 'blubb', version: '0.1.0', ports: [{name: 'out', type: 'output'}]})
+      api.addComponent({componentId: 'blubb', version: '0.1.0', ports: [{name: 'out', type: 'output'}]})
       .then(() => api.component('blubb'))
       .then((cmp) => expect(cmp.version).to.equal('0.1.0'))
     )
@@ -48,7 +48,7 @@ describe('Client REST API', () => {
   it('can use special characters in component names', () => {
     return server()
     .then((api) =>
-      api.addComponent({meta: 'blubb@→/â', version: '0.1.0', ports: [{name: 'out', type: 'output'}]})
+      api.addComponent({componentId: 'blubb@→/â', version: '0.1.0', ports: [{name: 'out', type: 'output'}]})
       .then(() => api.component('blubb@→/â'))
       .then((cmp) => expect(cmp.version).to.equal('0.1.0'))
     )
@@ -63,7 +63,7 @@ describe('Client REST API', () => {
   it('can interact with meta information', () => {
     return server()
     .then((api) =>
-      api.addComponent({meta: 'blubb', version: '0.1.0', ports: [{name: 'out', type: 'output'}]})
+      api.addComponent({componentId: 'blubb', version: '0.1.0', ports: [{name: 'out', type: 'output'}]})
       .then(() => api.addMeta('blubb', 'data', 4))
       .then(() => api.meta('blubb', 'data'))
       .then((val) => expect(val).to.equal(4))

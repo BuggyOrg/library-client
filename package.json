@@ -24,6 +24,7 @@
     "standard": "^6.0.8"
   },
   "dependencies": {
+    "@buggyorg/library-fileserver": "0.3.0",
     "lodash": "^4.13.1",
     "request-promise-native": "^1.0.2",
     "portfinder": "^1.0.5",
