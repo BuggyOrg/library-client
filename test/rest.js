@@ -9,7 +9,7 @@ chai.use(chaiAsPromised)
 var expect = chai.expect
 
 const defaultData = {
-  Components: [],
+  components: [],
   meta: [],
   config: []
 }
