@@ -78,4 +78,8 @@ describe('Client REST API', () => {
       .then((data) => expect(data).to.eql({data: 'a'}))
     )
   })
+
+  it('should include the `request` dependency', () => {
+    require('request')
+  })
 })
