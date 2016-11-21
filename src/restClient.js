@@ -22,7 +22,7 @@ export default (server) => {
     })
   }
 
-  return {
+  var API = {
     /**
      * Get information about the library server
      * @returns {Promise.<object>} An object containing the version of the server and its type.
@@ -90,4 +90,7 @@ export default (server) => {
      */
     export: () => get('export')
   }
+  return API.info()
+  .then(() => API)
+  .catch(() => Promise.reject('Unable to connect to: ' + server))
 }
