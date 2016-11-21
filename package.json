@@ -1,6 +1,6 @@
 {
   "name": "@buggyorg/library-client",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Client implementation for Buggy library access.",
   "main": "./lib/client.js",
   "scripts": {
